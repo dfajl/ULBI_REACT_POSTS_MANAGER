@@ -1,13 +1,9 @@
 import React from 'react';
+import { Post } from '../commonTypes';
 
 
 type PostItemProps = {
-    post: {
-        id: number,
-        title: string,
-        body: string  
-    }
-    
+  post: Post
 }
 
 const PostItem: React.FC<PostItemProps> = ({post})=> {
