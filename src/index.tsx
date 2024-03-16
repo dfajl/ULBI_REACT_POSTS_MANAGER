@@ -12,3 +12,5 @@ root.render(
   </React.StrictMode>
 );
 reportWebVitals();
+
+/* НАЧАТЬ С "хук useRef" */
