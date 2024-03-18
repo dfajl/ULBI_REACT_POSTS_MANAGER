@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './styles/App.css'
+import { Post } from './commonTypes';
 
 import PostList from './components/PostList';
 import UIButton from './components/UIComponents/UIButton/UIButton';
@@ -8,7 +9,7 @@ import UIInput from './components/UIComponents/UIInput/UIInput';
 
 function App() {
 
-const [posts, setPosts] = useState([
+const [posts, setPosts] = useState<Post[]>([
   {
     id: 1,
     title: 'JavaScript 1',
@@ -24,16 +25,19 @@ const [posts, setPosts] = useState([
     title: 'JavaScript 3',
     body: 'Description'
   }
-
 ])
+const [post, setPost] = useState<Post>({title: '', body: '', id: Date.now()})
 
-const [title, setTitle] = useState('')
-const [body, setBody] = useState('')
+//const bodyInputRef = useRef(null); 
+//пример НЕУПРАВЛЯЕМОГО компонента
 
 const addNewPost = (event: React.MouseEvent)=>{
   event.preventDefault()
-  console.log(title)
-  console.log(body)
+  //console.log(bodyInputRef.current) пример НЕУПРАВЛЯЕМОГО компонента
+
+  setPosts([...posts, {...post, id: Date.now()}])
+  setPost({title: '', body: '', id: Date.now()}) // очищаем инпуты
+  
 }
 
   return (
@@ -42,14 +46,15 @@ const addNewPost = (event: React.MouseEvent)=>{
         <UIInput 
           placeholder='Название поста'
           type='text'
-          value={title}
-          onChange={event => setTitle(event.target.value)}
+          value={post.title}
+          onChange={event => setPost({...post, title: event.target.value})}
         />
         <UIInput
-          value={body}
+          /* ref={bodyInputRef} */
+          value={post.body}
           type='text'
           placeholder='Описание поста'
-          onChange={event => setBody(event.target.value)}
+          onChange={event => setPost({...post, body: event.target.value})}
         />
         <UIButton onClick={addNewPost}>
           Добавить пост

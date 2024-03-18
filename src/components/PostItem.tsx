@@ -1,20 +1,19 @@
 import React from 'react';
 import { Post } from '../commonTypes';
 
-
 type PostItemProps = {
-  post: Post
+  post: Post,
+  index?: number
 }
 
-const PostItem: React.FC<PostItemProps> = ({post})=> {
+const PostItem: React.FC<PostItemProps> = ({post, index})=> {
   return (
     <div className='post'>
       <div className="post__content">
-          <strong>{post.id}. {post.title}</strong>
+          <strong>{index}. {post.title}</strong>
           <div>
               {post.body}
           </div>
-          
       </div>
       <div className="post__btns">
           <button> Удалить </button>

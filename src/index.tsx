@@ -13,4 +13,4 @@ root.render(
 );
 reportWebVitals();
 
-/* НАЧАТЬ С "хук useRef" */
+/* НАЧАТЬ С 59:15 */

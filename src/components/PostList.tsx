@@ -9,10 +9,11 @@ type PostListProps = {
 const PostList: React.FC<PostListProps> = ({posts})=> {
   return (
     <div>
-        {posts.map((post)=>
+        {posts.map((post, index)=>
             <PostItem
                 post = {post}
                 key = {post.id}
+                index = {index + 1}
             />
         )}
     </div>
