@@ -1,12 +1,15 @@
 import React from 'react';
 import { Post } from '../commonTypes';
+import UIButton from './UIComponents/UIButton/UIButton';
 
 type PostItemProps = {
   post: Post,
-  index?: number
+  index?: number,
+  removePost: (post: Post)=> void
 }
 
-const PostItem: React.FC<PostItemProps> = ({post, index})=> {
+const PostItem: React.FC<PostItemProps> = ({post, index, removePost})=> {
+  
   return (
     <div className='post'>
       <div className="post__content">
@@ -16,7 +19,7 @@ const PostItem: React.FC<PostItemProps> = ({post, index})=> {
           </div>
       </div>
       <div className="post__btns">
-          <button> Удалить </button>
+          <UIButton onClick={()=> removePost(post)}> Удалить </UIButton>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import classes from './UIButton.module.css'
 type UIBtnProps = {
   children: ReactNode
   disabled?: boolean,
-  onClick: (event: React.MouseEvent) => void
+  onClick?: (event: React.MouseEvent) => void
 }
 
 const UIButton: React.FC<UIBtnProps> = ({children, ...props})=> {

@@ -3,18 +3,20 @@ import PostItem from './PostItem';
 import { Post } from '../commonTypes';
 
 type PostListProps = {
-    posts: Post[] 
+    posts: Post[],
+    removePost: (post: Post)=> void
 }
 
-const PostList: React.FC<PostListProps> = ({posts})=> {
+const PostList: React.FC<PostListProps> = ({posts, removePost})=> {
   return (
     <div>
         {posts.map((post, index)=>
-            <PostItem
-                post = {post}
-                key = {post.id}
-                index = {index + 1}
-            />
+          <PostItem
+            post = {post}
+            key = {post.id}
+            index = {index + 1}
+            removePost = {removePost}
+          />
         )}
     </div>
   );
