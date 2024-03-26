@@ -4,6 +4,7 @@ import { Post } from './commonTypes';
 
 import PostList from './components/PostList';
 import PostForm from './components/PostForm';
+import UIHeader from './components/UIComponents/UIHeader/UIHeader'
 
 function App() {
   const [posts, setPosts] = useState<Post[]>([
@@ -29,13 +30,16 @@ function App() {
   }
 
   const removePost = (childrenPost: Post)=> {
-	setPosts(posts.filter(item => item.id !== childrenPost.id))
+	  setPosts(posts.filter(item => item.id !== childrenPost.id))
   }
 
   return (
     <div className="App">
       <PostForm createPost = {createPost}  />
-      <PostList posts={posts} removePost = {removePost}/>
+      {posts.length !== 0 ? 
+        <PostList posts={posts} removePost = {removePost}/> :
+        <UIHeader>ПОСТЫ НЕ НАЙДЕНЫ (:</UIHeader>
+      }
     </div>
   );
 }
